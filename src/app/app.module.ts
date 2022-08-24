@@ -12,6 +12,7 @@ import { MyClaimsComponent } from './my-claims/my-claims.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { AddclaimComponent } from './addclaim/addclaim.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AddclaimComponent } from './addclaim/addclaim.component';
     MyClaimsComponent,
     MenuComponent,
     FooterComponent,
-    AddclaimComponent
+    AddclaimComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
