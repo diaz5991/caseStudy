@@ -1,0 +1,29 @@
+<h1>My Claims </h1>
+
+<div class="container">
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Claim Number</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>CreationDate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let claims of claimsTable">
+                <th>{{claims.id}}</th>
+                <th>{{claims.description}}</th>
+                <th>{{claims.status}}</th>
+                <th>{{claims.creationDate |date }}</th>
+
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container" >
+    <button class="btn btn-success" routerLink="/addclaim" >Add Claim</button>
+</div>
