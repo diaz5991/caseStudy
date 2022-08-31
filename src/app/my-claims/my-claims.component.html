@@ -1,5 +1,7 @@
 <h1>My Claims </h1>
 
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+
 <div class="container">
     <table class="table">
 
@@ -9,6 +11,7 @@
                 <th>Description</th>
                 <th>Status</th>
                 <th>CreationDate</th>
+                <th>Color</th>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +20,9 @@
                 <th>{{claims.description}}</th>
                 <th>{{claims.status}}</th>
                 <th>{{claims.creationDate |date }}</th>
+                <th>{{claims.color}}</th>
+                <th><button (click)="updateClaim(claims.id)" class="btn btn-success">Updsate</button></th>
+                <th><button (click)="deleteClaim(claims.id)" class="btn btn-warning">Delete</button></th>
 
 
             </tr>
@@ -24,6 +30,6 @@
     </table>
 </div>
 
-<div class="container" >
-    <button class="btn btn-success" routerLink="/addclaim" >Add Claim</button>
+<div class="container">
+    <button class="btn btn-success" routerLink="/addclaim">Add Claim</button>
 </div>

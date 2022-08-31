@@ -9,12 +9,12 @@ export class AuthenticationHARCODEDService {
 
   authenticate(userName: string, password: string) {
 
-    console.log('before login ' + this.loggedInValidation())
+    //console.log('before login ' + this.loggedInValidation())
 
     if (userName === 'hector' && password === 'password') {
       sessionStorage.setItem('userLoggedIn', userName)
 
-      console.log('After login ' + this.loggedInValidation())
+      //console.log('After login ' + this.loggedInValidation())
       return true;
     }
     return false;
@@ -22,8 +22,8 @@ export class AuthenticationHARCODEDService {
 
   loggedInValidation() {
     let user = sessionStorage.getItem('userLoggedIn')
-    console.log(user)
-    return !(user === null)
+    //console.log(user)
+    return !(user === null) //return true if user is different to null
   }
 
   logout() {

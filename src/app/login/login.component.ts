@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   errorMessage = 'invalid password or username'
   errorFlag = false
   color = ''
+  
 
 
   constructor(private router: Router, private authenticationHARCODEDSerivce: AuthenticationHARCODEDService) { }

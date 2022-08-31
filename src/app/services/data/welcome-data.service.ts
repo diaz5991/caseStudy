@@ -9,7 +9,7 @@ export class WelcomeDataService {
   constructor(private http: HttpClient) { }
 
   executeHelloWorldBeanService() {
-    return this.http.get('http://localhost:8081/Hello/bean')
+    return this.http.get('http://localhost:8081/login/getUsers')
 
    // console.log("execute Hello World Bean Service")
   }
