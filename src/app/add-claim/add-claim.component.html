@@ -1,1 +1,23 @@
 <p>add-claim works!</p>
+<h1>Add Claim</h1>
+
+<div class="container">
+
+    <div class="container">
+        <h3>Car information</h3>
+        <fieldset class="form-group">
+            <label>Description</label>
+            <input type="text" name="description" [(ngModel)]="description" class="form-control">
+            <label>Model</label>
+            <input type="text" name="model" [(ngModel)]="model" requiered="requiered" class="form-control">
+            <label>Color</label>
+            <input type="text" name="color" [(ngModel)]="color" requiered="requiered" class="form-control">
+            <label>Status</label>
+            <input type="text" name="status" [(ngModel)]="status" requiered="requiered" class="form-control">
+        </fieldset>
+
+       
+        <div>
+            <button  class="btn btn-success" (click)="saveClaim()"> Submit Claim </button>
+        </div>
+    </div>

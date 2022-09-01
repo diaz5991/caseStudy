@@ -2,10 +2,19 @@
 
 <div class="container">
     <div *ngIf='errorFlag' class="error error-warning">{{errorMessage}}</div>
-    <div>
-        User Name: <input type="text" name="userName" [(ngModel)]="userName">
-        Password: <input type="password" name="password" [(ngModel)]="password">
+    <div class="container">
+        <fieldset>
+            <label>Name</label>
+            <input type="text" name="userName" [(ngModel)]="userName" class="form-control">
 
-        <button (click)=handleLogin() class="btn">Login</button>
+            <label>Password</label>
+            <input type="password" name="password" [(ngModel)]="password" class="form-control">
+        </fieldset>
+
+        <div class="container"><br>
+            <button (click)=handleLogin() class="btn btn-success">Login</button>
+            <br>
+            <button (click)=newUser() class="btn  btn-primary">Creae Account</button>
+        </div>
     </div>
 </div>

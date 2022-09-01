@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MyClaimsModelInt } from '../Interfaces/my-claims-int-model';
 
 import { MyClaimsDataService } from '../services/data/my-claims-data.service';
 
@@ -69,9 +70,7 @@ export class MyClaimsComponent implements OnInit {
 
   updateClaim(id: number){
 
-    this.router.navigate(['addclaim', id])
-
-    console.log("something",id)
+    this.router.navigate([`addclaim/${id}`])
 
   }
 

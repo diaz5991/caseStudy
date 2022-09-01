@@ -1,0 +1,25 @@
+<h1>Create Account</h1>
+<div *ngIf='newUserFlag' class="error error-warning">Your Account is Ready!</div>
+<div *ngIf='errorFlag' class="error error-warning">{{errorMessage}}</div>
+
+
+<div>
+<fieldset>
+<label>Name</label>
+<input type="text" name="name" [(ngModel)]="name" class="form-control">
+<label>Password</label>
+<div *ngIf='newUserFlag' class="error error-warning">Password Match!</div>
+<input type="text" name="name" [(ngModel)]="password" class="form-control">
+
+<label>Password Verification</label>
+<input type="text" name="name" [(ngModel)]="passwordVerification" class="form-control">
+
+<label>Email</label>
+<input type="text" name="name" [(ngModel)]="email" class="form-control">
+
+</fieldset>
+
+<button *ngIf='createBtn' class="btn btn-primary" (click)="newUserReady()">Create Account</button>
+<button *ngIf='newUserFlag'  class="btn btn-success" (click)="goToLogin()">Ready to Login!</button>
+
+</div>

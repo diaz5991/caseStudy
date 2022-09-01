@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   errorMessage = 'invalid password or username'
   errorFlag = false
   color = ''
-  
+
 
 
   constructor(private router: Router, private authenticationHARCODEDSerivce: AuthenticationHARCODEDService) { }
@@ -23,15 +23,16 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin() {
-
- 
-    if (this.authenticationHARCODEDSerivce.authenticate(this.userName,this.password)) {
+    if (this.authenticationHARCODEDSerivce.authenticate(this.userName, this.password)) {
       this.router.navigate(['welcome', this.userName])
-
     }
     else {
       this.errorFlag = true
     }
     console.log(this.userName + this.password)
+  }
+
+  newUser(){
+    this.router.navigate(['newUser'])
   }
 }
