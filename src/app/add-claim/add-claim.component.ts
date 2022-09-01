@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { MyClaimsModelInt } from '../Interfaces/my-claims-int-model';
+
 import { MyClaimsModel } from '../my-claims/my-claims.component';
 
 import { MyClaimsDataService } from '../services/data/my-claims-data.service';
+
+
 
 @Component({
   selector: 'app-add-claim',
@@ -13,54 +15,56 @@ import { MyClaimsDataService } from '../services/data/my-claims-data.service';
 })
 export class AddClaimComponent implements OnInit {
 
-  myClaimsModel: MyClaimsModelInt | undefined
-  
-  id=0
-  description= ''
-  status= false
-  creationDate= ''
-  color=''
-  model=''
+
+
+  claimsModel!: MyClaimsModel; //investigar
+
 
   constructor(private service: MyClaimsDataService,
-    private route: ActivatedRoute
-    
+    private route: ActivatedRoute,
+    private router: Router
+
   ) { }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.params['id'];
+    this.claimsModel = new MyClaimsModel(0,'',false,'','')
 
-    // const id = Number(this.route.snapshot.paramMap.get('id'));
+    if (id != -1) {
+      this.service.retrieveClaim(id).subscribe(data => {
+        this.claimsModel = data
+        //console.log(data)
+      }
+      )
+    }
+ 
 
-    // this.service.retrieveClaim(id).subscribe((data) => {
-    //   this.myClaimsModel = data;
-    //   this.model = String(this.myClaimsModel?.model)
-    //   this.description = String(this.myClaimsModel?.description)
-    //   this.status = Boolean(this.myClaimsModel?.status)
-    //   this.color = String(this.myClaimsModel?.color)
-
-    //   console.log(this.myClaimsModel)
-     
-    //   console.log(data)
-   // })
   }
 
-  saveClaim(){
-
+  saveClaim() {
     
-    this.model =String( this.myClaimsModel?.model)
-    this.description = String(this.myClaimsModel?.description)
-    this.status = Boolean(this.myClaimsModel?.status)
-    this.color = String(this.myClaimsModel?.color)
 
-    console.log(this.model)
+    const id = 0
+    if (id === 0) {
+      this.service.saveClaim(this.claimsModel).subscribe(data => {
+        this.claimsModel = data
 
-    this.service.saveClaim(this.myClaimsModel).subscribe((data) => {
+        console.log(data)
 
-      this.myClaimsModel= data
+      })
+      this.router.navigate(['myclaims'])
+    }else{
+      this.service.saveClaim(this.claimsModel).subscribe(data => {
+        this.claimsModel = data
 
-      console.log(this.myClaimsModel)
-      console.log(data)
-    })
-
+      })
+      this.router.navigate(['myclaims'])
+    }
   }
+    
+
+  
+
+
+
 }

@@ -3,21 +3,30 @@
 
 <div class="container">
 
-    <div class="container">
-        <h3>Car information</h3>
-        <fieldset class="form-group">
-            <label>Description</label>
-            <input type="text" name="description" [(ngModel)]="description" class="form-control">
-            <label>Model</label>
-            <input type="text" name="model" [(ngModel)]="model" requiered="requiered" class="form-control">
-            <label>Color</label>
-            <input type="text" name="color" [(ngModel)]="color" requiered="requiered" class="form-control">
-            <label>Status</label>
-            <input type="text" name="status" [(ngModel)]="status" requiered="requiered" class="form-control">
-        </fieldset>
 
-       
-        <div>
-            <button  class="btn btn-success" (click)="saveClaim()"> Submit Claim </button>
-        </div>
+    <div class="container">
+        <form (ngSubmit)="!addClaimsForm.invalid && saveClaim()" #addClaimsForm="ngForm">
+            <h3>Car information</h3>
+            <fieldset class="form-group">
+                <label>Description</label>
+                <input type="text" name="description" [(ngModel)]="claimsModel.description" class="form-control">
+                <label>Model</label>
+                <input type="text" name="model" [(ngModel)]="claimsModel.model" required="required"
+                    class="form-control">
+                <label>Color</label>
+                <input type="text" name="color" [(ngModel)]="claimsModel.color" required="required"
+                    class="form-control">
+                <label>Status</label>
+                <input type="text" name="status" [(ngModel)]="claimsModel.status" required="required"
+                    class="form-control">
+
+            </fieldset>
+
+
+            <div>
+                <button type="submit" class="btn btn-success"> Submit Claim </button>
+            </div>
+        </form>
     </div>
+
+</div>

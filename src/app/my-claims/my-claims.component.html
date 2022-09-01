@@ -19,7 +19,7 @@
                 <th>{{claims.id}}</th>
                 <th>{{claims.description}}</th>
                 <th>{{claims.status}}</th>
-                <th>{{claims.creationDate |date }}</th>
+               <!-- <th>{{claims.creationDate |date }}</th> -->
                 <th>{{claims.color}}</th>
                 <th><button (click)="updateClaim(claims.id)" class="btn btn-success">Update</button></th>
                 <th><button (click)="deleteClaim(claims.id)" class="btn btn-warning">Delete</button></th>
@@ -31,5 +31,5 @@
 </div>
 
 <div class="container">
-    <button class="btn btn-success" routerLink="/addclaim">Add Claim</button>
+    <button class="btn btn-success" (click) ="addClaim()">Add Claim</button>
 </div>

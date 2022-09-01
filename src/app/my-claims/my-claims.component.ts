@@ -12,7 +12,6 @@ export class MyClaimsModel {
     public id: number,
     public description: String,
     public status: boolean,
-    public creationDate: Date,
     public color: String,
     public model: String
 
@@ -28,18 +27,10 @@ export class MyClaimsModel {
 })
 export class MyClaimsComponent implements OnInit {
   claimsTable: MyClaimsModel[] = [];
-
-  
   message = ""
 
-
-  // claimsTable = [ //esuna lista
-  // new MyClaimsModel(1, 'this is a description', false, new Date()),
-  //new MyClaimsModel(2, 'this is a desfcription', false, new Date()),
-  //new MyClaimsModel(3, 'this is a description', false, new Date())  ]
-
   constructor(private claimsService: MyClaimsDataService,
-    private router:Router) { }
+    private router: Router) { }
 
   ngOnInit(): void {
 
@@ -68,10 +59,15 @@ export class MyClaimsComponent implements OnInit {
     console.log("something", id)
   }
 
-  updateClaim(id: number){
+  updateClaim(id: number) {
 
     this.router.navigate([`addclaim/${id}`])
 
+  }
+
+  addClaim() {
+
+    this.router.navigate(['addclaim/-1'])
   }
 
 

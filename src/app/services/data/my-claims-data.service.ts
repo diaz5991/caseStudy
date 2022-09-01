@@ -25,7 +25,10 @@ export class MyClaimsDataService {
     return this.http.get<MyClaimsModel>(`http://localhost:8081/claims/getClaimById/${id}`)
   }
 
-  saveClaim(claim: MyClaimsModelInt | undefined){
-    return this.http.post<MyClaimsModelInt | undefined>(`http://localhost:8081/claims/addClaims`,claim)
+  updateClaim(claim: MyClaimsModel){
+    return this.http.put<MyClaimsModel>(`http://localhost:8081/claims/addClaims`,claim)
+  }
+  saveClaim(claim: MyClaimsModel){
+    return this.http.post<MyClaimsModel>(`http://localhost:8081/claims/addClaims`,claim)
   }
 }
