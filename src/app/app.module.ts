@@ -12,9 +12,10 @@ import { MyClaimsComponent, MyClaimsModel } from './my-claims/my-claims.componen
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddClaimComponent } from './add-claim/add-claim.component';
 import { NewUserComponent } from './new-user/new-user.component';
+import { HttpInterceptorBasicAuthService } from './services/http/http-interceptor-basic-auth.service';
 
 
 
@@ -41,7 +42,12 @@ import { NewUserComponent } from './new-user/new-user.component';
 
 
   ],
-  providers: [],
+  providers: [
+{
+  provide :HTTP_INTERCEPTORS , useClass : HttpInterceptorBasicAuthService, multi:true
+}
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

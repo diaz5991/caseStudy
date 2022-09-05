@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MyClaimsModelInt } from 'src/app/Interfaces/my-claims-int-model';
@@ -13,22 +13,46 @@ export class MyClaimsDataService {
 
   getAllClaims() {
 
-    return this.http.get<MyClaimsModel[]>('http://localhost:8081/claims/getClaims');
+    let basicAuthHeaderString = this.createBasicAuthenticationHttpHeader();
+
+    let header = new HttpHeaders({
+      Authorization: basicAuthHeaderString
+    })
+
+    return this.http.get<MyClaimsModel[]>('http://localhost:8081/claims/getClaims', { headers: header });
   }
 
   deleteClaim(id: number) {
+
 
     return this.http.delete(`http://localhost:8081/claims/deleteClaims/${id}`)
   }
 
   retrieveClaim(id: number): Observable<any> {
+
     return this.http.get<MyClaimsModel>(`http://localhost:8081/claims/getClaimById/${id}`)
   }
 
-  updateClaim(claim: MyClaimsModel){
-    return this.http.put<MyClaimsModel>(`http://localhost:8081/claims/addClaims`,claim)
+  updateClaim(claim: MyClaimsModel) {
+
+
+    return this.http.put<MyClaimsModel>(`http://localhost:8081/claims/addClaims`, claim)
   }
-  saveClaim(claim: MyClaimsModel){
-    return this.http.post<MyClaimsModel>(`http://localhost:8081/claims/addClaims`,claim)
+  saveClaim(claim: MyClaimsModel) {
+
+    return this.http.post<MyClaimsModel>(`http://localhost:8081/claims/addClaims`, claim)
   }
+
+
+  createBasicAuthenticationHttpHeader() {
+    let username = 'user'
+    let password = 'password'
+    let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
+
+    return basicAuthHeaderString
+
+  }
+
+
+
 }
