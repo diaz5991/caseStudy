@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationHARCODEDService } from '../services/authentication-harcoded.service';
+import { BasicAuthenticationService } from '../services/basic-authentication.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +9,8 @@ import { AuthenticationHARCODEDService } from '../services/authentication-harcod
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public authenticationHARCODEDService: AuthenticationHARCODEDService) { }
+  constructor(public authenticationHARCODEDService: AuthenticationHARCODEDService,
+    private basicAuthService : BasicAuthenticationService) { }
 
   ngOnInit(): void {
 
@@ -16,7 +18,7 @@ export class MenuComponent implements OnInit {
 
   closeSession(){
    
-   this.authenticationHARCODEDService.logout()
+   this.basicAuthService.logout()
     
   }
 

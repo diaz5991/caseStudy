@@ -1,18 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BasicAuthenticationService {
 
-
   constructor(private http: HttpClient) { }
 
   authenticate(userName: string, password: string) {
-
-
-    if (userName === 'hector' && password === 'password') {
+    if (userName === 'user' && password === 'password') {
       sessionStorage.setItem('userLoggedIn', userName)
 
       return true;
@@ -20,19 +18,27 @@ export class BasicAuthenticationService {
     return false;
   }
 
+  executeBasicAuthenticationService(username: string, password: string) {
 
+    let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
 
-
-
-  executeBasicAuthenticationService() {
-
-    let basicAuthHeaderString = this.createBasicAuthenticationHttpHeader();
 
     let header = new HttpHeaders({
       Authorization: basicAuthHeaderString
 
     })
     return this.http.get<AuthenticationBean>('http://localhost:8081/basicAuth', { headers: header })
+      .pipe(
+        map(
+          data => {
+            sessionStorage.setItem('authenticateUser', username);
+            if(sessionStorage.getItem != null){
+            console.log("Si funcionaaaaaaaaaaa"+sessionStorage.getItem('authenticateUser'))
+            }
+            return data;
+          }
+        )
+      )
 
     // console.log("execute Hello World Bean Service")
   }
@@ -46,11 +52,8 @@ export class BasicAuthenticationService {
 
   }
 
-
-
-
   loggedInValidation() {
-    let user = sessionStorage.getItem('userLoggedIn')
+    let user = sessionStorage.getItem('authenticateUser')
 
     return !(user === null) //return true if user is different to null
   }
@@ -63,10 +66,10 @@ export class BasicAuthenticationService {
 
 }
 
-  export class AuthenticationBean{
+export class AuthenticationBean {
 
-    constructor(public message : String ){}
-  }
+  constructor(public message: String) { }
+}
 
 
 

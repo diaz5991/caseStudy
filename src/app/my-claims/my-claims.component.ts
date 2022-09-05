@@ -43,6 +43,7 @@ export class MyClaimsComponent implements OnInit {
     this.claimsService.getAllClaims().subscribe(
       response => {
         this.claimsTable = response;
+        console.log("aqui esta el refresh")
       }
     )
 
@@ -50,12 +51,14 @@ export class MyClaimsComponent implements OnInit {
 
   deleteClaim(id: number) {
 
-    this.claimsService.deleteClaim(id).subscribe(response => {
+    this.claimsService.deleteClaim(id).subscribe((response) => {
       console.log(response)
+    },
+    (_) => {
+      this.message = "Claim deleted"
+      this.refreshMyClaims();
     })
-    this.message = "Claim deleted"
-    this.refreshMyClaims();
-
+  
     console.log("something", id)
   }
 

@@ -22,8 +22,7 @@ export class MyClaimsDataService {
     return this.http.get<MyClaimsModel[]>('http://localhost:8081/claims/getClaims', { headers: header });
   }
 
-  deleteClaim(id: number) {
-
+  deleteClaim(id: number):Observable<any> {
 
     return this.http.delete(`http://localhost:8081/claims/deleteClaims/${id}`)
   }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterEvent, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthenticationHARCODEDService } from './authentication-harcoded.service';
+import { BasicAuthenticationService } from './basic-authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,12 @@ import { AuthenticationHARCODEDService } from './authentication-harcoded.service
 export class RouteGuardService implements CanActivate {
 
   constructor(private authenticationHARCODEDService: AuthenticationHARCODEDService,
-    private router: Router) { }
+    private router: Router,
+    private basicAuthenticationService : BasicAuthenticationService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-    if (this.authenticationHARCODEDService.loggedInValidation()) {
+    if (this.basicAuthenticationService.loggedInValidation()) {
       return true
     }
     this.router.navigate(['login'])

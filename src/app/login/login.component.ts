@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationHARCODEDService } from '../services/authentication-harcoded.service';
+import { BasicAuthenticationService } from '../services/basic-authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +10,16 @@ import { AuthenticationHARCODEDService } from '../services/authentication-harcod
 })
 export class LoginComponent implements OnInit {
 
-  userName = `hector`
-  password = ``
+  userName = `user`
+  password = `password`
   errorMessage = 'invalid password or username'
   errorFlag = false
   color = ''
+  welcomeFlag = false
 
-
-
-  constructor(private router: Router, private authenticationHARCODEDSerivce: AuthenticationHARCODEDService) { }
+  constructor(private router: Router,
+    private authenticationHARCODEDSerivce: AuthenticationHARCODEDService,
+    private basicAuthenticationService: BasicAuthenticationService) { }
 
   ngOnInit(): void {
   }
@@ -32,7 +34,28 @@ export class LoginComponent implements OnInit {
     console.log(this.userName + this.password)
   }
 
-  newUser(){
+  handleBasicAuthLogin() {
+    this.basicAuthenticationService.executeBasicAuthenticationService(this.userName, this.password).subscribe(
+      data => {
+
+        console.log("este es la info" +data)
+        this.router.navigate(['welcome', this.userName])
+        this.errorFlag = false
+        
+      },
+      error => {
+        console.log(error)
+        this.errorFlag = true
+      }
+    )
+
+
+    console.log(this.userName + this.password)
+
+
+  }
+
+  newUser() {
     this.router.navigate(['newUser'])
   }
 }
