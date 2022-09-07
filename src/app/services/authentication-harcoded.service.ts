@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthenticationHARCODEDService {
 
-  constructor() { }
+  constructor() { }/*
 
   authenticate(userName: string, password: string) {
    
@@ -28,6 +28,7 @@ export class AuthenticationHARCODEDService {
 
     sessionStorage.removeItem('userLoggedIn')
   }
+}*/
 }
 
 

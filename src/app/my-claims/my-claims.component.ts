@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MyClaimsModelInt } from '../Interfaces/my-claims-int-model';
-
 import { MyClaimsDataService } from '../services/data/my-claims-data.service';
 
 
@@ -15,6 +13,19 @@ export class MyClaimsModel {
     public color: String,
     public model: String
 
+  ) {
+
+  }
+}
+
+export class FileModel {
+
+  constructor(
+    public name: String,
+    public type: boolean,
+    public file: File,
+    public postresponse: any,
+    public succesfulresponse: String
   ) {
 
   }
@@ -54,11 +65,11 @@ export class MyClaimsComponent implements OnInit {
     this.claimsService.deleteClaim(id).subscribe((response) => {
       console.log(response)
     },
-    (_) => {
-      this.message = "Claim deleted"
-      this.refreshMyClaims();
-    })
-  
+      (_) => {
+        this.message = "Claim deleted"
+        this.refreshMyClaims();
+      })
+
     console.log("something", id)
   }
 

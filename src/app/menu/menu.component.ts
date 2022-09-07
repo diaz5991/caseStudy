@@ -9,8 +9,7 @@ import { BasicAuthenticationService } from '../services/basic-authentication.ser
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public authenticationHARCODEDService: AuthenticationHARCODEDService,
-    private basicAuthService : BasicAuthenticationService) { }
+  constructor(public basicAuthService : BasicAuthenticationService) { }
 
   ngOnInit(): void {
 

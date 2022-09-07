@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationHARCODEDService } from '../services/authentication-harcoded.service';
+
 import { BasicAuthenticationService } from '../services/basic-authentication.service';
 
 @Component({
@@ -18,21 +18,21 @@ export class LoginComponent implements OnInit {
   welcomeFlag = false
 
   constructor(private router: Router,
-    private authenticationHARCODEDSerivce: AuthenticationHARCODEDService,
+   // private authenticationHARCODEDSerivce: AuthenticationHARCODEDService,
     private basicAuthenticationService: BasicAuthenticationService) { }
 
   ngOnInit(): void {
   }
 
-  handleLogin() {
-    if (this.authenticationHARCODEDSerivce.authenticate(this.userName, this.password)) {
+ /* handleLogin() {
+    if (this.authenticationHARCODEDbasicAuthenticationServiceSerivce.authenticate(this.userName, this.password)) {
       this.router.navigate(['welcome', this.userName])
     }
     else {
       this.errorFlag = true
     }
     console.log(this.userName + this.password)
-  }
+  }*/
 
   handleBasicAuthLogin() {
     this.basicAuthenticationService.executeBasicAuthenticationService(this.userName, this.password).subscribe(
