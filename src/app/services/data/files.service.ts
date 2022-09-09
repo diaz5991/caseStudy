@@ -20,4 +20,10 @@ export class FilesService {
     formData.append('id', id);
     return this.http.post<any>(`${API_URL}/claims/uploadFile`, formData);
   }
+  viewFile(id: string): Observable<any> {
+    return this.http.get<any>(`${API_URL}/claims/viewFile/${id}`, {
+      observe: 'response',
+      responseType: 'blob' as 'json'
+    });
+  }
 }

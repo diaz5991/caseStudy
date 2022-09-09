@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { MyClaimsModelInt } from 'src/app/Interfaces/my-claims-int-model';
 import { MyClaimsDataService } from '../../services/data/my-claims-data.service';
 import Swal from 'sweetalert2';
 import { UpdateClaimComponent } from '../Dialogs/update-claim/update-claim.component';
 import { MatDialog } from '@angular/material/dialog';
+import { FilesService } from 'src/app/services/data/files.service';
 
 @Component({
   selector: 'app-my-claims',
@@ -15,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class MyClaimsComponent implements OnInit {
 
-  displayedColumns: string[] = ['claimNumber', 'description', 'status', 'color', 'actions'];
+  displayedColumns: string[] = ['claimNumber', 'description', 'status', 'color', 'download', 'actions'];
   dataSource!: MatTableDataSource<any>;
   tamanioTable = 0;
   @ViewChild('paginator', { static: false }) paginator!: MatPaginator;
@@ -31,7 +31,8 @@ export class MyClaimsComponent implements OnInit {
   constructor(
     private claimsService: MyClaimsDataService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private fileService: FilesService
   ) { }
 
   ngOnInit(): void {
@@ -64,6 +65,11 @@ export class MyClaimsComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.claimsTableFiltered);
     this.tamanioTable = this.dataSource.data.length;
     this.dataSource.paginator = this.paginator;
+  }
+  downloadFile(id: string): void {
+    this.fileService.viewFile(id).subscribe((resp) => {
+      console.log(resp);
+    });
   }
   deleteClaim(id: number): void {
     this.claimsService.deleteClaim(id).subscribe((response) => {
