@@ -26,9 +26,8 @@ export class MyClaimsDataService {
     return this.http.get<MyClaimsModel>(`${API_URL}/claims/getClaimById/${id}`)
   }
 
-  updateClaim(claim: any): Observable<any> {
-    const params = claim;
-    return this.http.put<any>(`${API_URL}/claims/addClaims`, params);
+  updateClaim(claim: any): Observable<any> {    
+    return this.http.post<any>(`${API_URL}/claims/addClaims`, claim);
   }
   saveClaim(claim: MyClaimsModel) {
 

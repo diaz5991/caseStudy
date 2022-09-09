@@ -36,7 +36,7 @@ export class UpdateClaimComponent implements OnInit {
   }
   getInfoClaim(): void {
     this.claimService.retrieveClaim(this.data.id).subscribe((resp) => {
-      this.detail.resp;
+      this.detail = resp;
       this.patchValues();
     });
   }

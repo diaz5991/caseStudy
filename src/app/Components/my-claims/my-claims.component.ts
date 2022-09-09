@@ -17,7 +17,7 @@ export class MyClaimsModel {
     public status: boolean,
     public color: String,
     public model: String
-  ) {}
+  ) { }
 }
 
 export class FileModel {
@@ -41,13 +41,13 @@ export class FileModel {
 export class MyClaimsComponent implements OnInit {
 
   displayedColumns: string[] = ['claimNumber', 'description', 'status', 'color', 'actions'];
-  dataSource!: MatTableDataSource<MyClaimsModelInt>;
+  dataSource!: MatTableDataSource<any>;
   tamanioTable = 0;
-  @ViewChild('paginator', {static: false}) paginator!: MatPaginator;
+  @ViewChild('paginator', { static: false }) paginator!: MatPaginator;
 
   maxDate = new Date();
-  claimsTable: Array<MyClaimsModelInt> = [];
-  claimsTableFiltered: Array<MyClaimsModelInt> = [];
+  claimsTable: Array<any> = [];
+  claimsTableFiltered: Array<any> = [];
 
   claimNumber = '';
   description = '';
@@ -63,29 +63,22 @@ export class MyClaimsComponent implements OnInit {
     this.refreshMyClaims()
   }
   refreshMyClaims(): void {
-    this.claimsTable.push({
-      id: 1,
-      description: 'Prueba',
-      status: true,
-      color: 'red',
-      model: 'si'
-    });
-    this.claimsTableFiltered = this.claimsTable;
-    this.dataSource = new MatTableDataSource(this.claimsTableFiltered);
-    this.tamanioTable = this.dataSource.data.length;
-    this.dataSource.paginator = this.paginator;
-    // this.claimsService.getAllClaims().subscribe(
-    //   response => {
-    //     this.claimsTable = response;
-    //     console.log("aqui esta el refresh")
-    //   }
-    // )
+    this.claimsService.getAllClaims().subscribe(
+      response => {
+        this.claimsTable = response;
+        this.claimsTableFiltered = this.claimsTable;
+        this.dataSource = new MatTableDataSource(this.claimsTableFiltered);
+        this.tamanioTable = this.dataSource.data.length;
+        this.dataSource.paginator = this.paginator;
+        console.log("aqui esta el refresh")
+      }
+    )
   }
   applyFilter(): void {
     this.claimsTableFiltered = this.claimsTable;
     this.claimsTableFiltered = this.claimsTableFiltered.filter((filter) => {
       return filter.id.toString().toLowerCase().includes(this.claimNumber.toString().toLowerCase()) &&
-              filter.description.toLowerCase().includes(this.description.toString().toLowerCase())
+        filter.description.toLowerCase().includes(this.description.toString().toLowerCase())
     });
     this.dataSource = new MatTableDataSource(this.claimsTableFiltered);
     this.tamanioTable = this.dataSource.data.length;
@@ -101,17 +94,17 @@ export class MyClaimsComponent implements OnInit {
     this.claimsService.deleteClaim(id).subscribe((response) => {
       console.log(response)
     },
-    (_) => {
-      Swal.fire({
-        icon: 'success',
-        title: 'Claim Deleted',
-        html: 'Claim has been deleted.',
-        showConfirmButton: false,
-        showCloseButton: true,
-        timer: 3000
-      });
-      this.refreshMyClaims();
-    })
+      (_) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Claim Deleted',
+          html: 'Claim has been deleted.',
+          showConfirmButton: false,
+          showCloseButton: true,
+          timer: 3000
+        });
+        this.refreshMyClaims();
+      })
   }
   updateClaim(id: number) {
     const dialogRef = this.dialog.open(UpdateClaimComponent, {
