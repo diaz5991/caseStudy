@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
-import { FileModel, MyClaimsModel } from '../my-claims/my-claims.component';
+import { FileModel, MyClaimsModel } from '../Components/my-claims/my-claims.component';
 import { FilesService } from '../services/data/files.service';
 
 import { MyClaimsDataService } from '../services/data/my-claims-data.service';

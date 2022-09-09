@@ -1,0 +1,29 @@
+<h3 mat-dialog-title>Update Claim</h3>
+<div class="contenedor-dialog">
+    <form [formGroup]="formData">
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-field-center">
+            <mat-label>Model</mat-label>
+            <input matInput formControlName="model">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Plates</mat-label>
+            <input matInput formControlName="plates">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-field-center">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status">
+                <mat-option value="In progress">In progress</mat-option>
+                <mat-option value="Rejected">Rejected</mat-option>
+                <mat-option value="Submited">Submited</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions class="contenedor-buttons">
+    <button mat-dialog-close='false' class="cancel">Cancel</button>
+    <button (click)="update()" [disabled]="formData.invalid">Update</button>
+</div>

@@ -1,2 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
-@import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css)
+@import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css);
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+* {
+    font-family: 'Montserrat';
+}
+.card-section {
+    position: relative;
+    width: 80%;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    margin-top: 2%;
+}
+.h3-filters {
+    position: relative;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #440234;
+    text-align: center;
+}
+.form-field-filter {
+    position: relative;
+    width: 32%;
+}
+.form-field-filter-center {
+    position: relative;
+    width: 32%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.table-material {
+    margin-top: 2%;
+    width: 100%;
+}
+.table-header {
+    background: #440234;
+    color: white;
+    font-size: .8rem;
+    font-weight: 600;
+    text-align: center !important;
+}
+.table-row {
+    color: #440234;
+    font-size: .7rem;
+    text-align: center !important;
+}
+.table-row-delete {
+    color: red;
+    text-align: center !important;
+}
+td.mat-cell:first-child {
+    border-left: 2px solid red;
+}  
+td.mat-cell:last-child {
+    border-right: 2px solid red;
+}

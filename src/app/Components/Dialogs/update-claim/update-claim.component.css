@@ -1,0 +1,42 @@
+h3 {
+    text-align: center;
+    color: black;
+    font-size: 1.3rem;
+}
+.contenedor-dialog {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+}
+.form-field {
+    width: 49%;
+}
+.form-field-center {
+    width: 49%;
+    margin-left: 2%;
+}
+.contenedor-buttons {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+button {
+    position: relative;
+    background: black;
+    color: white;
+    border: transparent;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+button.cancel {
+    background: white;
+    margin-right: 4%;
+    color: black;
+}
+button::disabled {
+    background: #dddd;
+    color: gray;
+}

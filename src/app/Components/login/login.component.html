@@ -1,0 +1,19 @@
+<div class="general-container">
+    <div class="form-container">
+        <h1>Login</h1>
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="userName" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Password</mat-label>
+            <input matInput [(ngModel)]="password" [ngModelOptions]="{standalone: true}" [type]="hidePass ? 'password' : 'text'">
+            <button mat-icon-button matSuffix class="button-hide" (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
+                <mat-icon>{{hidePass ? 'visibility' : 'visibility_off'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <div class="button-container">
+            <button (click)="handleBasicAuthLogin()" [disabled]="userName === '' || password === ''">Login</button>
+        </div>
+    </div>
+</div>

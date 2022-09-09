@@ -1,0 +1,45 @@
+.container-welcome {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+}
+h1 {
+    position: relative;
+    font-size: 2rem;
+    color: black;
+}
+.grid-container {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+.button-container {
+    position: relative;
+    width: 100%;
+    border: 1px solid #dddd;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+}
+.button-container:hover {
+    background: #440234;
+    color: white;
+}
+.button-container:hover h3 {
+    color: white;
+}
+h3 {
+    color: #440234;
+    font-size: 1.2rem;
+}
+.router-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
