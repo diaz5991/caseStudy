@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'welcome/:name', loadChildren: () => import('./Components/welcome/welcome.module').then(m => m.WelcomeModule), canActivate: [RouteGuardService]},
   {path: 'myclaims', loadChildren: () => import('./Components/my-claims/my-claims.module').then(m => m.MyClaimsModule), canActivate: [RouteGuardService]},
   {path: 'addclaim', loadChildren: () => import('./Components/add-claim/add-claim.module').then(m => m.AddClaimModule), canActivate: [RouteGuardService]},
-  {path: 'logout', component: LogoutComponent},
+  {path: 'logout', component: LogoutComponent,  canActivate: [RouteGuardService]},
   {path: '**', component: ErrorComponent}
 ];
 

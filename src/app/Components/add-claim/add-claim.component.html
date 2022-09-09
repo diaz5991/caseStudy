@@ -32,6 +32,6 @@
         <input class="file" id="fileInput" type="file" accept=".pdf" (change)="handleUpload($event)">
     </div>
     <div class="button-container">
-        <button [disabled]="formClaim.invalid">Create claim</button>
+        <button (click)="createClaim()" [disabled]="formClaim.invalid">Create claim</button>
     </div>
 </div>
