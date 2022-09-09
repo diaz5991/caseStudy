@@ -33,6 +33,7 @@ export class AddClaimComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    console.log(this.fileToUpload)
   }
   initForm(): void {
     this.formClaim = this.fb.group({
@@ -58,6 +59,7 @@ export class AddClaimComponent implements OnInit {
       const {id} = resp;
       const file = this.formFile.getRawValue();
       this.fileservice.uploadFile('application/pdf', file.uploadFile, file.uploadFile.name, id).subscribe((respFile) => {
+        this.router.navigate(['/myclaims']);
         Swal.fire({
           icon: 'success',
           title: 'Add Claim',

@@ -68,7 +68,18 @@ export class MyClaimsComponent implements OnInit {
   }
   downloadFile(id: string): void {
     this.fileService.viewFile(id).subscribe((resp) => {
-      console.log(resp);
+     const file = new Blob([resp.body],{type : 'application/pdf'});
+     const fileURL = URL.createObjectURL(file);
+     window.open(fileURL, '_blank');
+    },
+    (_) => {
+      Swal.fire({
+        icon: 'error',
+        html: 'File cannot be found',
+        showCloseButton : true,
+        showConfirmButton : false,
+        timer : 3000
+      });
     });
   }
   deleteClaim(id: number): void {
@@ -96,7 +107,11 @@ export class MyClaimsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((res) => {
       if (res !== 'false') {
-        this.claimsService.updateClaim(res).subscribe((resp) => {
+        const data = {
+          ...res,        
+          id
+        };
+        this.claimsService.updateClaim(data).subscribe((resp) => {
           this.refreshMyClaims();
           Swal.fire({
             icon: 'success',
