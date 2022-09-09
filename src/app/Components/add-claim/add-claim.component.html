@@ -1,0 +1,37 @@
+<div class="general-container">
+    <h1>Add Claim</h1>
+    <div class="card-section-60">
+        <h3 class="h3-filters">Car Information</h3>
+        <form [formGroup]="formClaim">
+            <mat-form-field appearance="outline" class="form-field-filter">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="description">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="form-field-filter-center">
+                <mat-label>Model</mat-label>
+                <input matInput formControlName="model">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="form-field-filter">
+                <mat-label>Plates</mat-label>
+                <input matInput formControlName="plates">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="form-field-filter">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status">
+                    <mat-option value="In progress">In progress</mat-option>
+                    <mat-option value="Rejected">Rejected</mat-option>
+                    <mat-option value="Submited">Submited</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+        <label for="fileInput">
+            <div class="file-container">
+                <i class="fa-solid fa-file-pdf fa-5x"></i>
+            </div>
+        </label>
+        <input class="file" id="fileInput" type="file" accept=".pdf" (change)="handleUpload($event)">
+    </div>
+    <div class="button-container">
+        <button [disabled]="formClaim.invalid">Create claim</button>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+.general-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+label {
+    width: 100%;
+}
+.file-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: 3px solid orange;
+    color: orange;
+    padding: 20px;
+    cursor: pointer;
+}
+.file {
+    display: none;
+}
+.button-container {
+    position: relative;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 2%;
+}
+button {
+    position: relative;
+    padding: 8px 25px;
+    background: orange;
+    color: white;
+    cursor: pointer;
+    border: transparent;
+    border-radius: 10px;
+}
+button:disabled {
+    background: #dddd;
+    color: gray;
+}

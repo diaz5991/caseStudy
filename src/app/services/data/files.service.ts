@@ -1,21 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { API_URL } from 'src/app/app.constants';
-import { FileModel } from 'src/app/Components/my-claims/my-claims.component';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilesService {
 
-  constructor(private http:HttpClient) {
+  constructor(
+    private http:HttpClient
+  ) {}
 
-   }
-
-   
-   uploadFile(fileData: FormData){
-     
-      
-    return this.http.post<FormData>(`${API_URL}/claims/uploadFile`,fileData,{observe: 'response'});
+  uploadFile(type: string, file: File, name: string, id: string): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('type', type);
+    formData.append('name', name);    
+    formData.append('id', id);
+    return this.http.post<any>(`${API_URL}/claims/uploadFile`, formData);
   }
 }

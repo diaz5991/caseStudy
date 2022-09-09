@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationHARCODEDService } from '../services/authentication-harcoded.service';
-import { BasicAuthenticationService } from '../services/basic-authentication.service';
+import { AuthenticationHARCODEDService } from '../../services/authentication-harcoded.service';
+import { BasicAuthenticationService } from '../../services/basic-authentication.service';
 
 @Component({
   selector: 'app-menu',

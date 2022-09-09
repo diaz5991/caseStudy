@@ -8,31 +8,6 @@ import Swal from 'sweetalert2';
 import { UpdateClaimComponent } from '../Dialogs/update-claim/update-claim.component';
 import { MatDialog } from '@angular/material/dialog';
 
-
-export class MyClaimsModel {
-
-  constructor(
-    public id: number,
-    public description: String,
-    public status: boolean,
-    public color: String,
-    public model: String
-  ) { }
-}
-
-export class FileModel {
-
-  constructor(
-    public name: String,
-    public type: boolean,
-    public file: File,
-    public postresponse: any,
-    public succesfulresponse: String
-  ) {
-
-  }
-}
-
 @Component({
   selector: 'app-my-claims',
   templateUrl: './my-claims.component.html',
@@ -130,7 +105,7 @@ export class MyClaimsComponent implements OnInit {
     });
   }
   addClaim() {
-    this.router.navigate(['addclaim/-1'])
+    this.router.navigate(['addclaim']);
   }
 }
 
